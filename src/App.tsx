@@ -6,7 +6,7 @@ import CarValue from "./components/CarValue";
 
 const App: React.FC = () => {
   return (
-    <div>
+    <div className="p-10">
       <CarForm />
       <CarList />
       <CarSearch />
