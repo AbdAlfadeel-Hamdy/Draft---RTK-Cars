@@ -2,9 +2,16 @@ import { useSelector } from "react-redux";
 import { RootState } from "../store";
 
 const CarValue: React.FC = () => {
-  const totalValue = useSelector((state: RootState) =>
-    state.cars.cars.reduce((acc, cur) => acc + cur.cost, 0)
+  const totalValue = useSelector(({ cars: { cars, searchTerm } }: RootState) =>
+    cars.reduce(
+      (acc, car) =>
+        car.name.toLowerCase().includes(searchTerm.toLowerCase())
+          ? acc + car.cost
+          : acc,
+      0
+    )
   );
+
   return <div>{totalValue}</div>;
 };
 
